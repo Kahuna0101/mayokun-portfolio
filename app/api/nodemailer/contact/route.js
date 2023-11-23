@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
-    const { name, email, phone, message, consent } = await req.json();
+    const { name, email, phone, message } = await req.json();
 
     const user = process.env.EMAIL_USER;
 
@@ -18,17 +18,13 @@ export async function POST(req) {
     });
 
     const mailOption = {
-      from: `AdronHomes 🏡 <${user}>`,
+      from: `Mayokun Portfolio`,
       to: user,
       replyTo: email,
       subject: `Contact Form Submission By ${name}`,
       html: `
             <div style="width: 100%; background-color: #f3f9ff; padding: 5rem 0">
                 <div style="max-width: 700px; background-color: white; margin: 0 auto">
-                    <div style="width: 100%; background-color: green; padding: 20px 0">
-                      <img src="https://res.cloudinary.com/daamcwt3y/image/upload/v1693341349/logo_n24gyg.jpg" alt="AdronHomes" style="width: 100%; height: 70px; object-fit: contain" />
-                    </div>
-
                     <div style="width: 100%; gap: 10px; padding: 30px 0; display: grid">
                         <p style="font-weight: 800; font-size: 1.2rem; padding: 0 30px">
                             From Adron Homes
@@ -38,7 +34,6 @@ export async function POST(req) {
                             <p>Email: ${email}<p/>
                             <p>Phone Number: ${phone}<p/>
                             <p>Message: ${message}<p/>
-                            <p>Consent: ${consent}<p/>
                         </div>
                     </div>
                 </div>

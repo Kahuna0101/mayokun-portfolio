@@ -1,27 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  font-family: "Poppins", sans-serif;
+  @apply box-border p-0 m-0 scroll-smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer utilities {
+  .flex-app {
+    @apply flex w-full pt-20 lg:pt-8 flex-col lg:w-full justify-center items-center min-h-screen
+  }
+
+  .p-text {
+    @apply text-left text-gray-500 text-base leading-6 sm:text-lg lg:text-xl
+  }
+
+  .head-text {
+    @apply text-center text-black-color capitalize font-extrabold text-[2.75rem] min-[2000px]:text-[4rem] max-[450px]:text-[2rem] [&>span]:text-secondary-color
+  }
+
+  .bold-text {
+    @apply text-base font-extrabold text-black-color text-left min-[2000px]:text-[2rem] max-[450px]:text-sm
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Footer */
+.app__footer-card {
+  @apply flex flex-row justify-start items-center min-w-[290px] p-1 rounded-lg transition-all duration-300 ease-in-out my-4 cursor-pointer
+}
+
+.account-form_input {
+  @apply border border-["#1F1F22"] bg-["#101012"] font-semibold
+}
+
+.no-focus {
+  @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
 }

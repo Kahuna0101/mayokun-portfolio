@@ -26,8 +26,9 @@ const Header = () => {
   return (
     <section
       id="home"
-      className="flex-app lg:flex-row bg-hero bg-cover bg-repeat bg-center"
+      
     >
+      <div className="flex-app lg:flex-row bg-hero bg-cover bg-repeat bg-center">
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
@@ -68,7 +69,7 @@ const Header = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className="flex-1 justify-end items-end h-full relative"
       >
-        <div className="w-[40rem] h-[55rem] lg:left-10 relative">
+        <div className="w-[23rem] md:w-full h-[45rem] md:h-[55rem] relative">
           <Image
             src="/profile.png"
             alt="profile"
@@ -113,6 +114,7 @@ const Header = () => {
           </div>
         ))}
       </motion.div>
+      </div>
     </section>
   );
 };

@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import PhotoSlider from "../shared/PhotoSlider";
 
 import { getWorks } from "@/sanity/actions";
+import { Skeleton } from "../ui/skeleton";
 
 const Work = async () => {
   const works = await getWorks();
@@ -12,7 +14,10 @@ const Work = async () => {
           Accomplished <span className="text-secondary-color">Projects</span>
         </h2>
 
-        <PhotoSlider works={works} />
+        <Suspense fallback={<Skeleton />}>
+          <PhotoSlider works={works} />
+        </Suspense>
+        
       </div>
     </section>
   );

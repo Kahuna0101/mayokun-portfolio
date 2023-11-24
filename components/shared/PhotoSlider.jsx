@@ -29,7 +29,7 @@ export default function PhotoSlider({ works }) {
         className="mySwiper"
       >
         {works.map((work) => (
-            <SwiperSlide key={work._id}>
+            <SwiperSlide key={work._id} className='bg-center bg-cover'>
                 <Image 
                   src={work.image}
                   width={100}

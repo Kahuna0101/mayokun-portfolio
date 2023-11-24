@@ -1,6 +1,7 @@
 import { About, Header, Skills, Work } from "@/components/home";
 import Contact from "@/components/shared/Contact";
 import Navbar from "@/components/shared/Navbar";
+import TopButton from "@/components/shared/TopButton";
 import { Copyright } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +16,7 @@ export default function Home() {
       <Skills />
       <Contact />
 
-      <div className="w-full flex flex-col py-5r">
+      <div className="w-full flex flex-col py-5">
         <div className="flex gap-5 mb-3 flex-col md:flex-row">
           <Link href='Mayokun O.A.doc' className="p-3 px-6 rounded-full bg-secondary-color text-slate-50 hover:bg-blue-700 flex gap-3 justify-center items-center">
             Download My CV
@@ -32,6 +33,7 @@ export default function Home() {
           <p className="p-text">All rights reserved</p>
         </div>
       </div>
+      <TopButton />
     </div>
   );
 }

@@ -24,7 +24,6 @@ export const getSkills = async () => {
       groq`*[_type == "skills"]{
                 _id,
                 name,
-                bgColor,
                 "image": icon.asset->url
             }`
     );
@@ -41,7 +40,12 @@ export const getExperiences = async () => {
       groq`*[_type == "experiences"]{
         _id,
         year,
-        works
+        works[0...6]->{
+          _id,
+          position,
+          company,
+          desc
+        }
       }`
     );
 

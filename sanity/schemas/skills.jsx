@@ -1,4 +1,4 @@
-export default {
+const schema = {
   name: 'skills',
   title: 'Skills',
   type: 'document',
@@ -6,11 +6,6 @@ export default {
     {
       name: 'name',
       title: 'Name',
-      type: 'string',
-    },
-    {
-      name: 'bgColor',
-      title: 'BgColor',
       type: 'string',
     },
     {
@@ -23,3 +18,5 @@ export default {
     },
   ],
 }
+
+export default schema;

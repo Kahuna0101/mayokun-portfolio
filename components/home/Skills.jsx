@@ -1,11 +1,12 @@
-"use client";
 import { getExperiences, getSkills } from "@/sanity/actions";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { MotionDiv } from "../shared/MotionDiv";
 
 const Skills = async () => {
   const skills = await getSkills();
   const experiences = await getExperiences();
+
+  const sortedExperiences = experiences.sort((a, b) => b.year - a.year);
 
   return (
     <section id="skills">
@@ -15,34 +16,29 @@ const Skills = async () => {
         </h2>
 
         <div className="w-[80%] mt-8 flex flex-row max-[900px]:w-full  max-[900px]:flex-col">
-          <motion.div className="flex flex-1 flex-wrap justify-start items-start mr-20 max-[900px]:mr-0 max-[900px]:justify-center max-[900px]:items-center">
+          <div className="flex flex-1 flex-wrap justify-start items-start max-[900px]:mr-0 max-[900px]:justify-center max-[900px]:items-center">
             {skills.map((skill) => (
-              <motion.div
+              <MotionDiv
                 whileInView={{ opacity: [0, 1] }}
                 transition={{ duration: 0.5 }}
-                className="flex-col text-center m-4 transition-all duration-300 ease-in-out flex justify-center items-center"
+                className="flex-col overflow-hidden text-center m-4 transition-all duration-300 ease-in-out flex justify-center items-center w-28 h-28 rounded-[50%] bg-white hover:shadow-lg"
                 key={skill.name}
               >
-                <div
-                  className={`flex flex-col justify-center items-center w-28 h-28 rounded-[50%] bg-white hover:shadow-lg ${skill.bgColor}`}
-                >
                   <Image
                     src={skill.image}
                     alt={skill.name}
-                    width={50}
+                    width={90}
                     height={50}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className=""
+                    className="object-contain"
                   />
-                  <p className="mt-2 font-medium">{skill.name}</p>
-                </div>
-              </motion.div>
+              </MotionDiv>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div className="flex flex-1 justify-start items-start flex-col max-[900px]:mt-8">
-            {experiences?.map((experience) => (
-              <motion.div
+          <div className="flex flex-1 justify-start items-start flex-col max-[900px]:mt-8">
+            {sortedExperiences?.map((experience) => (
+              <div
                 className="flex w-full flex-row justify-start items-start my-1"
                 key={experience.year}
               >
@@ -51,10 +47,10 @@ const Skills = async () => {
                     {experience.year}
                   </p>
                 </div>
-                <motion.div className="flex-1">
+                <div className="flex-1">
                   {experience.works.map((work) => (
                     <>
-                      <motion.div
+                      <MotionDiv
                         whileInView={{ opacity: [0, 1] }}
                         transition={{ duration: 0.5 }}
                         className="flex flex-col justify-start items-start mb-4 cursor-pointer"
@@ -67,13 +63,13 @@ const Skills = async () => {
                           {work.company}
                         </p>
                         <p className="p-text">{work.desc}</p>
-                      </motion.div>
+                      </MotionDiv>
                     </>
                   ))}
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

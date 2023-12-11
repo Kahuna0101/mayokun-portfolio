@@ -1,47 +1,31 @@
-"use client"
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from "next/image"
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Image from 'next/image';
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 
 export default function PhotoSlider({ works }) {
   return (
-    <>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
+    <ScrollArea className="w-full whitespace-nowrap rounded-md border">
+      <div className="flex w-max space-x-4 p-4">
         {works.map((work) => (
-            <SwiperSlide key={work._id} className='bg-center bg-cover'>
-                <Image 
-                  src={work.image}
-                  width={100}
-                  height={100}
-                  alt={work.title}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="w-full"
-                />
-            </SwiperSlide>
+          <figure key={work.title} className="shrink-0">
+            <div className="overflow-hidden rounded-md relative w-[70vh] h-[45vh]">
+              <Image
+                src={work.image}
+                alt={work.title}
+                className="aspect-[3/4] h-fit w-fit object-cover"
+                fill
+              />
+            </div>
+            <figcaption className="pt-2 text-xs text-muted-foreground">
+              Title:{" "}
+              <span className="font-semibold text-foreground">
+                {work.title}
+              </span>
+            </figcaption>
+          </figure>
         ))}
-        
-      </Swiper>
-    </>
-  );
+      </div>
+      <ScrollBar orientation="horizontal"/>
+    </ScrollArea>
+  )
 }

@@ -23,6 +23,7 @@ module.exports = {
       backgroundImage: {
         'menu-bg':"url('/bgWhite.png')",
         'hero': "url('/bgIMG.png')",
+        'contact': "url('/phone.png')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

@@ -1,4 +1,4 @@
-export default{
+const schema = {
   name:'experiences',
   title:'Experiences',
   type: 'document',
@@ -6,13 +6,16 @@ export default{
       {
           name:'year',
           title:'Year',
-          type:'string'
+          type:'string',
+          validation: Rule => Rule.required()
       },
       {
           name:'works',
           title:'Works',
           type:'array',
-          of:[{ type:'workExperience'}]
+          of:[{ type: 'reference', to: [{ type: 'workExperience' }]}],
       },
   ]
 }
+
+export default schema;

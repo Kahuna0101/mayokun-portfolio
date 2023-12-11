@@ -1,8 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
-import SocialMedia from "../shared/SocialMedia";
 
 import {
   Card,
@@ -10,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { MotionDiv } from "../shared/MotionDiv";
 
 const scaleVariants = {
   whileInView: {
@@ -24,12 +21,9 @@ const scaleVariants = {
 
 const Header = () => {
   return (
-    <section
-      id="home"
-      
-    >
+    <section id="home">
       <div className="flex-app lg:flex-row bg-hero bg-cover bg-repeat bg-center">
-      <motion.div
+      <MotionDiv
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
         className="flex-1 flex-col w-full mt-10 justify-center items-start"
@@ -42,7 +36,7 @@ const Header = () => {
             <CardContent>
               <p className="p-text !text-center">Hello, I am</p>
               <h2 className="font-semibold md:font-extrabold capitalize text-3xl md:text-5xl text-slate-600">
-                Engr. mayokun
+                Arch. mayokun
               </h2>
             </CardContent>
           </Card>
@@ -60,11 +54,9 @@ const Header = () => {
             </p>
             </CardContent>
           </Card>
+      </MotionDiv>
 
-        <SocialMedia />
-      </motion.div>
-
-      <motion.div
+      <MotionDiv
         whileInView={{ opacity: [0, 1] }}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className="flex-1 justify-end items-end h-full relative"
@@ -87,9 +79,9 @@ const Header = () => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="absolute left-0 right-0 bottom-0 z-0 w-full h-[90%]"
         />
-      </motion.div>
+      </MotionDiv>
 
-      <motion.div
+      <MotionDiv
         variants={scaleVariants}
         whileInView={scaleVariants.whileInView}
         className="flex-0.75 hidden lg:flex flex-col justify-evenly items-start h-full ml-4"
@@ -100,7 +92,7 @@ const Header = () => {
           { src: "/revit.png", size: "w-16 h-16" },
         ].map((circle, index) => (
           <div
-            key={`circle-${index}`}
+            key={circle.size}
             className={`rounded-full bg-white shadow-lg p-4 ${circle.size}`}
           >
             <Image
@@ -113,7 +105,7 @@ const Header = () => {
             />
           </div>
         ))}
-      </motion.div>
+      </MotionDiv>
       </div>
     </section>
   );
